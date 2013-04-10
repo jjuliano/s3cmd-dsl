@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>S3cmd-dsl by jjuliano</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>S3cmd-dsl</h1>
+        <p>a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client. </p>
+
+        <p class="view"><a href="https://github.com/jjuliano/s3cmd-dsl">View the Project on GitHub <small>jjuliano/s3cmd-dsl</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>S3Cmd-DSL</h1>
+
+<p><code>s3cmd-dsl</code> is a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client.</p>
+
+<p>It supports the following:</p>
+
+<ul>
+<li>a complete DSL for Amazon S3.</li>
+<li>covers s3cmd version 1.0.1</li>
+<li>supports method-chaining</li>
+<li>supports one-liner for quick and easy s3cmd tasks</li>
+<li>backed with full-test coverage</li>
+<li>organize your scripts and save them</li>
+<li>offers an <code>execute</code> method to execute the tasks right away</li>
+</ul><p>To install, type <code>gem install s3cmd-dsl</code></p>
+
+<p>Usage:</p>
+
+<pre><code>require 's3cmd-dsl'
+include S3Cmd
+
+# For quick usage in one-line. Passing 'execute' executes the command.
+s3cmd('List all buckets', 'ls', 'execute')
+
+# Or do it this way
+s3cmd 'List all buckets' do
+  path '/usr/local/bin/s3cmd'
+  ls 's3://BUCKET'
+  save_script('list_all_buckets.sh')
+  execute
+end
+
+# When passing parameters
+s3cmd 'List all buckets' do
+  path '/usr/local/bin/s3cmd'
+  sync '/local/path', 's3://BUCKET'
+  rinclude '[0-9].*.jpg'
+  exclude '*.jpg'
+  config '/etc/my_s3cmd_config.cfg'
+  save_script('list_all_buckets.sh')
+  execute
+end
+
+s3cmd 'Get Files (Example 2)' do
+  get 's3://BUCKET', '/tmp'
+  recursive
+end
+
+# And using the 'bucket' or 'files' keyword
+s3cmd 'List all buckets' do
+  path '/usr/local/bin/s3cmd'
+  bucket 's3://BUCKET'
+  ls
+end
+
+# Or chain all the methods
+s3cmd do
+  path('/usr/local/bin/s3cmd').bucket('s3://BUCKET').config('/etc/my_s3cmd_config.cfg').save_script('list_all_buckets.sh').execute
+end
+
+# or using 'files'
+filelist = ['file1', 'file2']
+s3cmd('Upload filelist to bucket') do
+  path 'test-s3cmd'
+  files filelist
+  bucket 's3://BUCKET'
+  put
+end
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jjuliano">jjuliano</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
