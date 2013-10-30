@@ -67,3 +67,7 @@ Usage:
       bucket 's3://BUCKET'
       put
     end
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jjuliano/s3cmd-dsl/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
