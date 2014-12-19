@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/jjuliano/s3cmd-dsl.svg?branch=master)](https://travis-ci.org/jjuliano/s3cmd-dsl)
 
-S3Cmd-DSL - Amazon S3 Toolkit for Ruby
+S3Cmd-DSL - Smart Amazon S3 Toolkit for Ruby
 ======================================
 
 `s3cmd-dsl` is a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client.

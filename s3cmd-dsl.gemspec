@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.date = Time.now
   spec.authors = ["Joel Bryan Juliano"]
   spec.email = %q{joelbryan.juliano@gmail.com}
-  spec.summary = %q{S3Cmd-DSL - Amazon S3 Toolkit for Ruby}
+  spec.summary = %q{S3Cmd-DSL - Smart Amazon S3 Toolkit for Ruby}
   spec.homepage = %q{http://github.com/jjuliano/s3cmd-dsl}
   spec.description = %q{A gem providing a ruby DSL interface to s3cmd Amazon S3 client.}
   spec.license = 'GNU LGPLv3'
