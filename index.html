@@ -3,42 +3,35 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>S3cmd-dsl by jjuliano</title>
+    <title>S3Cmd-DSL: Smart Amazon S3 Toolkit for Ruby by jjuliano</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/jjuliano/s3cmd-dsl">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/jjuliano/s3cmd-dsl/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/jjuliano/s3cmd-dsl/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
     <div class="wrapper">
+      <header>
+        <h1>S3Cmd-DSL: Smart Amazon S3 Toolkit for Ruby</h1>
+        <p>a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client. </p>
 
+        <p class="view"><a href="https://github.com/jjuliano/s3cmd-dsl">View the Project on GitHub <small>jjuliano/s3cmd-dsl</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jjuliano/s3cmd-dsl">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
       <section>
-        <div id="title">
-          <h1>S3cmd-dsl</h1>
-          <p>a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client. </p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/jjuliano">jjuliano</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+        <p><a href="https://travis-ci.org/jjuliano/s3cmd-dsl"><img src="https://travis-ci.org/jjuliano/s3cmd-dsl.svg?branch=master" alt="Build Status"></a></p>
 
-        <h1>S3Cmd-DSL</h1>
+<h1>
+<a id="s3cmd-dsl---smart-amazon-s3-toolkit-for-ruby" class="anchor" href="#s3cmd-dsl---smart-amazon-s3-toolkit-for-ruby" aria-hidden="true"><span class="octicon octicon-link"></span></a>S3Cmd-DSL - Smart Amazon S3 Toolkit for Ruby</h1>
 
 <p><code>s3cmd-dsl</code> is a gem providing a complete ruby DSL interface to s3cmd Amazon S3 client.</p>
 
@@ -52,65 +45,110 @@
 <li>backed with full-test coverage</li>
 <li>organize your scripts and save them</li>
 <li>offers an <code>execute</code> method to execute the tasks right away</li>
-</ul><p>To install, type <code>gem install s3cmd-dsl</code></p>
+</ul>
 
-<p>Usage:</p>
+<p>To install, type <code>gem install s3cmd-dsl</code></p>
 
-<div class="highlight"><pre>  <span class="nb">require</span> <span class="s1">'s3cmd-dsl'</span>
-  <span class="kp">include</span> <span class="no">S3Cmd</span>
+<h3>
+<a id="why-s3cmd-dsl" class="anchor" href="#why-s3cmd-dsl" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why S3Cmd-DSL?</h3>
 
-  <span class="c1"># For quick usage in one-line. Passing 'execute' executes the command.</span>
-  <span class="n">s3cmd</span><span class="p">(</span><span class="s1">'List all buckets'</span><span class="p">,</span> <span class="s1">'ls'</span><span class="p">,</span> <span class="s1">'execute'</span><span class="p">)</span>
+<p>S3Cmd-DSL creates simple and small development tools that help you design,
+develop, deploy cloud infrastractures for your enterprise software systems.</p>
 
-  <span class="c1"># Or do it this way</span>
-  <span class="n">s3cmd</span> <span class="s1">'List all buckets'</span> <span class="k">do</span>
-    <span class="n">path</span> <span class="s1">'/usr/local/bin/s3cmd'</span>
-    <span class="n">ls</span> <span class="s1">'s3://BUCKET'</span>
-    <span class="n">save_script</span><span class="p">(</span><span class="s1">'list_all_buckets.sh'</span><span class="p">)</span>
-    <span class="n">execute</span>
-  <span class="k">end</span>
+<h4>
+<a id="s3cmd-dsl-pro-a-commercial-supported-version-of-s3cmd-dsl" class="anchor" href="#s3cmd-dsl-pro-a-commercial-supported-version-of-s3cmd-dsl" aria-hidden="true"><span class="octicon octicon-link"></span></a>S3Cmd-DSL Pro: A Commercial, Supported Version of S3Cmd-DSL</h4>
 
-  <span class="c1"># When passing parameters</span>
-  <span class="n">s3cmd</span> <span class="s1">'List all buckets'</span> <span class="k">do</span>
-    <span class="n">path</span> <span class="s1">'/usr/local/bin/s3cmd'</span>
-    <span class="n">sync</span> <span class="s1">'/local/path'</span><span class="p">,</span> <span class="s1">'s3://BUCKET'</span>
-    <span class="n">rinclude</span> <span class="s1">'[0-9].*.jpg'</span>
-    <span class="n">exclude</span> <span class="s1">'*.jpg'</span>
-    <span class="n">config</span> <span class="s1">'/etc/my_s3cmd_config.cfg'</span>
-    <span class="n">save_script</span><span class="p">(</span><span class="s1">'list_all_buckets.sh'</span><span class="p">)</span>
-    <span class="n">execute</span>
-  <span class="k">end</span>
+<p>S3Cmd-DSL Pro is a collection of useful functionality for the open source S3Cmd-DSL library with priority support via Remote access or Skype from the author, new features in-demand, upgrades and lots more.</p>
 
-  <span class="n">s3cmd</span> <span class="s1">'Get Files (Example 2)'</span> <span class="k">do</span>
-    <span class="n">get</span> <span class="s1">'s3://BUCKET'</span><span class="p">,</span> <span class="s1">'/tmp'</span>
-    <span class="n">recursive</span>
-  <span class="k">end</span>
+<p>Sales of S3Cmd-DSL Pro also benefit the community by ensuring that S3Cmd-DSL itself will remain well supported for the foreseeable future.</p>
 
-  <span class="c1"># And using the 'bucket' or 'files' keyword</span>
-  <span class="n">s3cmd</span> <span class="s1">'List all buckets'</span> <span class="k">do</span>
-    <span class="n">path</span> <span class="s1">'/usr/local/bin/s3cmd'</span>
-    <span class="n">bucket</span> <span class="s1">'s3://BUCKET'</span>
-    <span class="n">ls</span>
-  <span class="k">end</span>
+<h4>
+<a id="licensing" class="anchor" href="#licensing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licensing</h4>
 
-  <span class="c1"># Or chain all the methods</span>
-  <span class="n">s3cmd</span> <span class="k">do</span>
-    <span class="n">path</span><span class="p">(</span><span class="s1">'/usr/local/bin/s3cmd'</span><span class="p">)</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">'s3://BUCKET'</span><span class="p">)</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">'/etc/my_s3cmd_config.cfg'</span><span class="p">)</span><span class="o">.</span><span class="n">save_script</span><span class="p">(</span><span class="s1">'list_all_buckets.sh'</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span>
-  <span class="k">end</span>
+<p>S3Cmd-DSL is available under the terms of the GNU LGPLv3 license.</p>
 
-  <span class="c1"># or using 'files'</span>
-  <span class="n">filelist</span> <span class="o">=</span> <span class="o">[</span><span class="s1">'file1'</span><span class="p">,</span> <span class="s1">'file2'</span><span class="o">]</span>
-  <span class="n">s3cmd</span><span class="p">(</span><span class="s1">'Upload filelist to bucket'</span><span class="p">)</span> <span class="k">do</span>
-    <span class="n">path</span> <span class="s1">'test-s3cmd'</span>
-    <span class="n">files</span> <span class="n">filelist</span>
-    <span class="n">bucket</span> <span class="s1">'s3://BUCKET'</span>
-    <span class="n">put</span>
-  <span class="k">end</span>
-</pre></div>
+<p>In addition to its useful functionality, buying S3Cmd-DSL Pro grants your organization a S3Cmd-DSL Commercial License instead of the GNU LGPL, avoiding any legal issues your lawyers might raise. Please contact <a href="mailto:joelbryan.juliano@gmail.com">joelbryan.juliano@gmail.com</a> for further detail on licensing including options for embedding S3Cmd-DSL Pro in your own products.</p>
+
+<h4>
+<a id="buy-s3cmd-dsl-pro" class="anchor" href="#buy-s3cmd-dsl-pro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buy S3Cmd-DSL Pro</h4>
+
+<p>Contact me via <a href="mailto:joelbryan.juliano@gmail.com">joelbryan.juliano@gmail.com</a>, and Pay via Paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6MLTH5P4SELAU">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6MLTH5P4SELAU</a></p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage:</h1>
+
+<div class="highlight highlight-ruby"><pre>    <span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>s3cmd-dsl<span class="pl-pds">'</span></span>
+    <span class="pl-k">include</span> <span class="pl-vo">S3Cmd</span>
+
+    <span class="pl-c"># For quick usage in one-line. Passing 'execute' executes the command.</span>
+    s3cmd(<span class="pl-s1"><span class="pl-pds">'</span>List all buckets<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>ls<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>execute<span class="pl-pds">'</span></span>)
+
+    <span class="pl-c"># Or do it this way</span>
+    s3cmd <span class="pl-s1"><span class="pl-pds">'</span>List all buckets<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+      path <span class="pl-s1"><span class="pl-pds">'</span>/usr/local/bin/s3cmd<span class="pl-pds">'</span></span>
+      ls <span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>
+      save_script(<span class="pl-s1"><span class="pl-pds">'</span>list_all_buckets.sh<span class="pl-pds">'</span></span>)
+      execute
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"># When passing parameters</span>
+    s3cmd <span class="pl-s1"><span class="pl-pds">'</span>List all buckets<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+      path <span class="pl-s1"><span class="pl-pds">'</span>/usr/local/bin/s3cmd<span class="pl-pds">'</span></span>
+      sync <span class="pl-s1"><span class="pl-pds">'</span>/local/path<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>
+      rinclude <span class="pl-s1"><span class="pl-pds">'</span>[0-9].*.jpg<span class="pl-pds">'</span></span>
+      exclude <span class="pl-s1"><span class="pl-pds">'</span>*.jpg<span class="pl-pds">'</span></span>
+      config <span class="pl-s1"><span class="pl-pds">'</span>/etc/my_s3cmd_config.cfg<span class="pl-pds">'</span></span>
+      save_script(<span class="pl-s1"><span class="pl-pds">'</span>list_all_buckets.sh<span class="pl-pds">'</span></span>)
+      execute
+    <span class="pl-k">end</span>
+
+    s3cmd <span class="pl-s1"><span class="pl-pds">'</span>Get Files (Example 2)<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+      get <span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>/tmp<span class="pl-pds">'</span></span>
+      recursive
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"># And using the 'bucket' or 'files' keyword</span>
+    s3cmd <span class="pl-s1"><span class="pl-pds">'</span>List all buckets<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+      path <span class="pl-s1"><span class="pl-pds">'</span>/usr/local/bin/s3cmd<span class="pl-pds">'</span></span>
+      bucket <span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>
+      ls
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"># Or chain all the methods</span>
+    s3cmd <span class="pl-k">do</span>
+      path(<span class="pl-s1"><span class="pl-pds">'</span>/usr/local/bin/s3cmd<span class="pl-pds">'</span></span>).bucket(<span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>).config(<span class="pl-s1"><span class="pl-pds">'</span>/etc/my_s3cmd_config.cfg<span class="pl-pds">'</span></span>).save_script(<span class="pl-s1"><span class="pl-pds">'</span>list_all_buckets.sh<span class="pl-pds">'</span></span>).execute
+    <span class="pl-k">end</span>
+
+    <span class="pl-c"># or using 'files'</span>
+    filelist <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>file1<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>file2<span class="pl-pds">'</span></span>]
+    s3cmd(<span class="pl-s1"><span class="pl-pds">'</span>Upload filelist to bucket<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
+      path <span class="pl-s1"><span class="pl-pds">'</span>test-s3cmd<span class="pl-pds">'</span></span>
+      files filelist
+      bucket <span class="pl-s1"><span class="pl-pds">'</span>s3://BUCKET<span class="pl-pds">'</span></span>
+      put
+    <span class="pl-k">end</span></pre></div>
+
+<h3>
+<a id="donations" class="anchor" href="#donations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Donations</h3>
+
+<p>Please support independent cloud computing toolkits, also money donated to the project will benefit the community by ensuring that S3Cmd-DSL itself will remain well supported for the foreseeable future. To Donate, please visit: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=KT9CY4T7BYDM4">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=KT9CY4T7BYDM4</a></p>
       </section>
-
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jjuliano">jjuliano</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-57800038-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
