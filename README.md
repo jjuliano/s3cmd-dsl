@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jjuliano/s3cmd-dsl.svg?branch=master)](https://travis-ci.org/jjuliano/s3cmd-dsl)
+
 S3Cmd-DSL - Amazon S3 Toolkit for Ruby
 ======================================
 
