@@ -2,8 +2,8 @@
   #
   # Homepage::  http://github.com/jjuliano/s3cmd-dsl
   # Author::    Joel Bryan Juliano
-  # Copyright:: (cc) 2013 Joel Bryan Juliano
-  # License::   MIT
+  # Copyright:: (cc) 2013-2015 Joel Bryan Juliano
+  # License::   GNU LGPLv3
   #
   require_relative 'version'
 
